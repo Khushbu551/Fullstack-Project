@@ -40,5 +40,17 @@
     "title": "hausaufgaben",
     "completed": true,
     "uID": 1
+  },
+  {
+    "id": 1747939722549,
+    "title": "E-Mails checken",
+    "completed": true,
+    "uID": "u3"
+  },
+  {
+    "id": 1747939745800,
+    "title": "Tagesabschluss notieren",
+    "completed": false,
+    "uID": "u3"
   }
 ]
