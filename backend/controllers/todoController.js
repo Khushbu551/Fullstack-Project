@@ -33,18 +33,29 @@ export const addTodo = (req, res) => {
   res.status(201).json(newTodo);
 };
 
-// UPDATE todo (toggle complete)
+
+// UPDATE todo (toggle complete or edit title)
 export const editTodo = (req, res) => {
   const id = parseInt(req.params.id);
-  const { completed } = req.body;
+  const { completed, title } = req.body;
 
   const todo = todos.find((t) => t.id === id);
   if (!todo) return res.status(404).json({ message: "Todo not found" });
 
-  todo.completed = completed;
+  // ✅ Update completed if present
+  if (typeof completed === "boolean") {
+    todo.completed = completed;
+  }
+
+  // ✅ Update title if present
+  if (typeof title === "string" && title.trim() !== "") {
+    todo.title = title.trim();
+  }
+
   saveTodos(todos);
   res.json(todo);
 };
+
 
 // DELETE todo
 export const deleteTodo = (req, res) => {
